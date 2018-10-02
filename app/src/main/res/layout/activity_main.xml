@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@drawable/ghibli">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Past Emotions" />
+
+    <ListView
+        android:id="@+id/PastEmotionList"
+        android:layout_width="fill_parent"
+        android:layout_height="263dp"
+        android:layout_weight="1"
+        android:scrollbars="vertical" >
+
+    </ListView>
+
+    <TextView
+        android:id="@+id/instruction"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Choose from love, joy, surprise, anger, sadness or fear" />
+
+    <Button
+        android:id="@+id/loveButton"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Love"
+        android:alpha="0.5"/>
+
+    <Button
+        android:id="@+id/joyButton"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Joy"
+        android:alpha="0.5"/>
+
+    <Button
+        android:id="@+id/surpriseButton"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Surprise"
+        android:alpha="0.5"/>
+
+    <Button
+        android:id="@+id/angerButton"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Anger"
+        android:alpha="0.5"/>
+
+    <Button
+        android:id="@+id/sadButton"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:text="Sadness"
+        android:alpha="0.5"/>
+
+    <Button
+        android:id="@+id/fearButton"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:text="Fear"
+        android:alpha="0.5"/>
+
+    <Button
+        android:id="@+id/countButton"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:text="Count Emotion"
+        android:alpha="0.5"/>
+
+</LinearLayout>
