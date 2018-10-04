@@ -1,12 +1,10 @@
 package com.example.wdai_feelsbook;
-
 /*
  * Copyright (c) 2018. CMPUT301. University of Alberta - All Rights Reserved.
  *  You may use, distribute or modify this code under terms and conditions of Code of Student
  *  Behaviour at University of Alberta.
  *
  */
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
@@ -18,7 +16,6 @@ import java.io.OutputStreamWriter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Date;
-
 
 import android.content.Context;
 import android.content.Intent;
@@ -34,10 +31,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 
 /**
  *
@@ -57,8 +52,6 @@ import com.google.gson.reflect.TypeToken;
  *  emotions. The user can also click the Count Emotion button to see the count of each emotion ever
  *  recorded using the app.
  */
-
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -84,12 +77,10 @@ public class MainActivity extends AppCompatActivity {
      */
     private Context mContext = this;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         pastEmotionList = (ListView) findViewById(R.id.PastEmotionList);
 
@@ -101,10 +92,8 @@ public class MainActivity extends AppCompatActivity {
         Button fearButton = (Button) findViewById(R.id.fearButton);
         Button countButton = (Button) findViewById(R.id.countButton);
 
-
         /*initialize the context menu for each item in list_view*/
         registerForContextMenu(pastEmotionList);
-
 
         /* love button action */
         loveButton.setOnClickListener(new View.OnClickListener() {
@@ -112,16 +101,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String text = textList[0];
+                String timeStamp = returnTime();
 
-                Date date = new Date(System.currentTimeMillis());
-                String day = String.format("%tFT", date);
-                String hour = String.format("%tT", date);
-                String currentTime = day + hour;
-
-                Emotion newEmotion = new Emotion(text, "", currentTime, 1);
+                Emotion newEmotion = new Emotion(text, "", timeStamp, 1);
                 emotionList.add(newEmotion);
                 adapter.notifyDataSetChanged();
-
 
                 saveInFile(mContext);
 
@@ -140,24 +124,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String text = textList[1];
+                String timeStamp = returnTime();
 
-                Date date = new Date(System.currentTimeMillis());
-                String day = String.format("%tFT", date);
-                String hour = String.format("%tT", date);
-                String currentTime = day + hour;
-
-                Emotion newEmotion = new Emotion(text, "", currentTime, 1);
+                Emotion newEmotion = new Emotion(text, "", timeStamp, 1);
                 emotionList.add(newEmotion);
                 adapter.notifyDataSetChanged();
-
 
                 saveInFile(mContext);
 
                 Toast.makeText(getApplicationContext(),"New emotion added",Toast.LENGTH_SHORT).show();
-
             }
         });
-
 
         /* surprise button action */
         surpriseButton.setOnClickListener(new View.OnClickListener() {
@@ -165,21 +142,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String text = textList[2];
+                String timeStamp = returnTime();
 
-                Date date = new Date(System.currentTimeMillis());
-                String day = String.format("%tFT", date);
-                String hour = String.format("%tT", date);
-                String currentTime = day + hour;
-
-                Emotion newEmotion = new Emotion(text, "", currentTime, 1);
+                Emotion newEmotion = new Emotion(text, "", timeStamp, 1);
                 emotionList.add(newEmotion);
                 adapter.notifyDataSetChanged();
-
 
                 saveInFile(mContext);
 
                 Toast.makeText(getApplicationContext(),"New emotion added",Toast.LENGTH_SHORT).show();
-
             }
         });
 
@@ -189,23 +160,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String text = textList[3];
+                String timeStamp = returnTime();
 
-                Date date = new Date(System.currentTimeMillis());
-                String day = String.format("%tFT", date);
-                String hour = String.format("%tT", date);
-                String currentTime = day + hour;
-
-                Emotion newEmotion = new Emotion(text, "", currentTime, 1);
+                Emotion newEmotion = new Emotion(text, "", timeStamp, 1);
                 emotionList.add(newEmotion);
                 adapter.notifyDataSetChanged();
-
 
                 saveInFile(mContext);
 
                 Toast.makeText(getApplicationContext(),"New emotion added",Toast.LENGTH_SHORT).show();
             }
         });
-
 
         /*sad button action */
         sadButton.setOnClickListener(new View.OnClickListener() {
@@ -213,23 +178,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String text = textList[4];
+                String timeStamp = returnTime();
 
-                Date date = new Date(System.currentTimeMillis());
-                String day = String.format("%tFT", date);
-                String hour = String.format("%tT", date);
-                String currentTime = day + hour;
-
-                Emotion newEmotion = new Emotion(text, "", currentTime, 1);
+                Emotion newEmotion = new Emotion(text, "", timeStamp, 1);
                 emotionList.add(newEmotion);
                 adapter.notifyDataSetChanged();
-
 
                 saveInFile(mContext);
 
                 Toast.makeText(getApplicationContext(),"New emotion added",Toast.LENGTH_SHORT).show();
             }
         });
-
 
         /* fear button action */
         fearButton.setOnClickListener(new View.OnClickListener() {
@@ -237,16 +196,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String text = textList[5];
+                String timeStamp = returnTime();
 
-                Date date = new Date(System.currentTimeMillis());
-                String day = String.format("%tFT", date);
-                String hour = String.format("%tT", date);
-                String currentTime = day + hour;
-
-                Emotion newEmotion = new Emotion(text, "", currentTime, 1);
+                Emotion newEmotion = new Emotion(text, "", timeStamp, 1);
                 emotionList.add(newEmotion);
                 adapter.notifyDataSetChanged();
-
 
                 saveInFile(mContext);
 
@@ -254,7 +208,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
 
         /* go to the count activity to see the count of each emotion */
         countButton.setOnClickListener(new View.OnClickListener() {
@@ -280,7 +233,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
     /* create a new object for the alert dialog */
     final WindowPop windowpop = new WindowPop(this);
 
@@ -293,7 +245,6 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.context_menu, menu);
     }
-
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
@@ -332,19 +283,47 @@ public class MainActivity extends AppCompatActivity {
 
             default:
                 return super.onContextItemSelected(item);
-
         }
+    }
 
+    /* Compares the first 2 characters */
+    static boolean compareStr(String s1, String s2) {
+        return s1.regionMatches(0, s2, 0, 2);
     }
 
 
+    /* a for loop that counts the number of each emotion in the past emotion list */
+    public void countEmotion(){
+        for (int i = 0; i < emotionList.size(); i++) {
+            if(compareStr(textList[0], emotionList.get(i).getEmotion()))
+                countLove += emotionList.get(i).getValue();
+            else if(compareStr(textList[1], emotionList.get(i).getEmotion()))
+                countJoy += emotionList.get(i).getValue();
+            else if(compareStr(textList[2], emotionList.get(i).getEmotion()))
+                countSurprise += emotionList.get(i).getValue();
+            else if(compareStr(textList[3], emotionList.get(i).getEmotion()))
+                countAnger += emotionList.get(i).getValue();
+            else if(compareStr(textList[4], emotionList.get(i).getEmotion()))
+                countSadness += emotionList.get(i).getValue();
+            else if(compareStr(textList[5], emotionList.get(i).getEmotion()))
+                countFear += emotionList.get(i).getValue();
+        }
+    }
 
+    /* return the timestamp for past emotion list */
+    public String returnTime(){
+        Date date = new Date(System.currentTimeMillis());
+        String day = String.format("%tFT", date);
+        String hour = String.format("%tT", date);
+        String currentTime = day + hour;
+        return currentTime;
+    }
 
-/**
- * --The following code was taken from lonelyTwitter (written by Joshua Carles Campbell) with some modifications
- * --onStart, loadFromFile, saveInFile are for saving the past emotion list and their corresponding
- * --emotion name, timestamp and comment in a file for reopening after app has been closed
-**/
+    /**
+     * --The following code was taken from lonelyTwitter (written by Joshua Carles Campbell) with some modifications
+     * --onStart, loadFromFile, saveInFile are for saving the past emotion list and their corresponding
+     * --emotion name, timestamp and comment in a file for reopening after app has been closed
+    **/
 
     @Override
     protected void onStart() {
@@ -392,33 +371,6 @@ public class MainActivity extends AppCompatActivity {
             // TODO Auto-generated catch block
             throw new RuntimeException();
         }
-    }
-
-    /* Compares the first 2 characters */
-    static boolean compareStr(String s1, String s2) {
-
-        return s1.regionMatches(0, s2, 0, 2);
-    }
-
-
-    /* a for loop that counts the number of each emotion in the past emotion list */
-    public void countEmotion(){
-        for (int i = 0; i < emotionList.size(); i++) {
-            if(compareStr(textList[0], emotionList.get(i).getEmotion()))
-                countLove += emotionList.get(i).getValue();
-            else if(compareStr(textList[1], emotionList.get(i).getEmotion()))
-                countJoy += emotionList.get(i).getValue();
-            else if(compareStr(textList[2], emotionList.get(i).getEmotion()))
-                countSurprise += emotionList.get(i).getValue();
-            else if(compareStr(textList[3], emotionList.get(i).getEmotion()))
-                countAnger += emotionList.get(i).getValue();
-            else if(compareStr(textList[4], emotionList.get(i).getEmotion()))
-                countSadness += emotionList.get(i).getValue();
-            else if(compareStr(textList[5], emotionList.get(i).getEmotion()))
-                countFear += emotionList.get(i).getValue();
-
-        }
-
     }
 
 }

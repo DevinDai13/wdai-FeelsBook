@@ -8,7 +8,6 @@ import java.util.Comparator;
  *
  */
 
-
 /**
  * --Emotion class for storing all the info a emotion record needs such as the name of emotion,
  * comments, timestamp and the value(which always equals to 1 for counting emotion purpose)
@@ -18,14 +17,11 @@ import java.util.Comparator;
  * a custom object type.
  */
 
-
-
 public class Emotion {
     private String emotion;
     private String comment;
     private String date;
     private int value;
-
 
     public Emotion(String emotion, String comment, String date, int value){
         this.emotion = emotion;
@@ -74,14 +70,10 @@ public class Emotion {
             return emo1.getDate().compareTo(emo2.getDate());
         }};
 
-
-
     @Override
     /*using this displays the name + date */
     public String toString() {
         return date + " | " + emotion;
     }
-
-
 }
 
