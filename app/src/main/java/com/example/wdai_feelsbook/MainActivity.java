@@ -46,6 +46,11 @@ import com.google.gson.reflect.TypeToken;
  */
 
 /**
+ * https://wallpaper-house.com/data/out/7/wallpaper2you_140113.jpg
+ * This above image was used for the background of this application
+ */
+
+/**
  *
  *  This class controls the activities on the main page of the app. It shows the past records of the
  *  user entered emotions and the user can long click the list of past emotions to edit or delete
@@ -97,11 +102,11 @@ public class MainActivity extends AppCompatActivity {
         Button countButton = (Button) findViewById(R.id.countButton);
 
 
-        //initialize the context menu for each item in list_view
+        /*initialize the context menu for each item in list_view*/
         registerForContextMenu(pastEmotionList);
 
 
-        // love button action
+        /* love button action */
         loveButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -122,13 +127,14 @@ public class MainActivity extends AppCompatActivity {
 
                 /**
                  * https://www.javatpoint.com/android-toast-example
+                 * used for creating Toast text
                  */
                 Toast.makeText(getApplicationContext(),"New emotion added",Toast.LENGTH_SHORT).show();
 
             }
         });
 
-        //joy button action
+        /*joy button action */
         joyButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -153,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        // surprise button action
+        /* surprise button action */
         surpriseButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -177,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //anger button action
+        /*anger button action */
         angerButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -201,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        //sad button action
+        /*sad button action */
         sadButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -225,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        // fear button action
+        /* fear button action */
         fearButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -250,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        // go to the count activity to see the count of each emotion
+        /* go to the count activity to see the count of each emotion */
         countButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -260,7 +266,7 @@ public class MainActivity extends AppCompatActivity {
                 countSadness = 0;
                 countFear = 0;
                 countAnger = 0;
-                // call countEmotion method when count button is clicked
+                /* call countEmotion method when count button is clicked */
                 countEmotion();
                 Intent goToCountActivity = new Intent(getApplicationContext(), Count.class);
                 goToCountActivity.putExtra("numLove", countLove);
@@ -275,10 +281,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    // create a new object for the popup window
+    /* create a new object for the alert dialog */
     final WindowPop windowpop = new WindowPop(this);
 
-    // context menu for each item in past emotion list
+    /* context menu for each item in past emotion list */
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenu.ContextMenuInfo menuInfo) {
@@ -295,35 +301,24 @@ public class MainActivity extends AppCompatActivity {
         int position = info.position;
         switch(item.getItemId()){
 
-            // when delete option is clicked
+            /* when delete option is clicked */
             case R.id.delete:
                 // get content of the item user clicked at that position
                 String clickedItemContent = emotionList.get(position).getEmotion();
 
-                if (compareStr(clickedItemContent, "love")){
+                if (compareStr(clickedItemContent, textList[0])){
                     countLove -= emotionList.get(position).getValue();
-                }
-
-                else if (compareStr(clickedItemContent, "joy")){
+                } else if (compareStr(clickedItemContent, textList[1])){
                     countJoy -= emotionList.get(position).getValue();
-                }
-
-                else if (compareStr(clickedItemContent, "surprise")){
+                } else if (compareStr(clickedItemContent, textList[2])){
                     countSurprise -= emotionList.get(position).getValue();
-                }
-
-                else if (compareStr(clickedItemContent, "anger")){
+                } else if (compareStr(clickedItemContent, textList[3])){
                     countAnger -= emotionList.get(position).getValue();
-                }
-
-                else if (compareStr(clickedItemContent, "sadness")){
+                } else if (compareStr(clickedItemContent, textList[4])){
                     countSadness -= emotionList.get(position).getValue();
-                }
-
-                else if (compareStr(clickedItemContent, "fear")){
+                } else if (compareStr(clickedItemContent, textList[5])){
                     countFear -= emotionList.get(position).getValue();
                 }
-
                 emotionList.remove(info.position);
                 adapter.notifyDataSetChanged();
                 saveInFile(mContext);
@@ -331,7 +326,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"Emotion deleted",Toast.LENGTH_SHORT).show();
                 return true;
 
-            // the pop window appears for editing when edit is clicked
+            /* the pop window appears for editing when edit is clicked */
             case R.id.edit:
                 windowpop.editEmotion(position);
 
@@ -399,27 +394,27 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Compares the first 2 characters
+    /* Compares the first 2 characters */
     static boolean compareStr(String s1, String s2) {
 
         return s1.regionMatches(0, s2, 0, 2);
     }
 
 
-    // a for loop that counts the number of each emotion in the past emotion list
+    /* a for loop that counts the number of each emotion in the past emotion list */
     public void countEmotion(){
         for (int i = 0; i < emotionList.size(); i++) {
-            if(compareStr("love", emotionList.get(i).getEmotion()))
+            if(compareStr(textList[0], emotionList.get(i).getEmotion()))
                 countLove += emotionList.get(i).getValue();
-            else if(compareStr("joy", emotionList.get(i).getEmotion()))
+            else if(compareStr(textList[1], emotionList.get(i).getEmotion()))
                 countJoy += emotionList.get(i).getValue();
-            else if(compareStr("surprise", emotionList.get(i).getEmotion()))
+            else if(compareStr(textList[2], emotionList.get(i).getEmotion()))
                 countSurprise += emotionList.get(i).getValue();
-            else if(compareStr("anger", emotionList.get(i).getEmotion()))
+            else if(compareStr(textList[3], emotionList.get(i).getEmotion()))
                 countAnger += emotionList.get(i).getValue();
-            else if(compareStr("sadness", emotionList.get(i).getEmotion()))
+            else if(compareStr(textList[4], emotionList.get(i).getEmotion()))
                 countSadness += emotionList.get(i).getValue();
-            else if(compareStr("fear", emotionList.get(i).getEmotion()))
+            else if(compareStr(textList[5], emotionList.get(i).getEmotion()))
                 countFear += emotionList.get(i).getValue();
 
         }

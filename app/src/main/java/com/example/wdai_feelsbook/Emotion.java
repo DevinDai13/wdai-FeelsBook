@@ -77,7 +77,7 @@ public class Emotion {
 
 
     @Override
-    //using this displays the name + date
+    /*using this displays the name + date */
     public String toString() {
         return date + " | " + emotion;
     }

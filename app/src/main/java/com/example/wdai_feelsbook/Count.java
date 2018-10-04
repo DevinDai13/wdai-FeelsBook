@@ -13,7 +13,9 @@ import android.widget.TextView;
 
 
 /**
- * This activity page is for showing the user the count of each emotion recorded
+ * This activity page is for showing the user the count of each emotion recorded. it simply get the
+ * six text views for display and calls the display method which is used for getting and formatting
+ * the information that the user sees.
  * So it is really straightforward
  */
 
@@ -39,7 +41,7 @@ public class Count extends AppCompatActivity {
         fear = (TextView) findViewById(R.id.fear);
         anger = (TextView) findViewById(R.id.anger);
 
-        // method calls to display the final count on the activity page
+        /* method calls to display the final count on the activity page */
         display(love, 0, "numLove");
         display(joy, 1, "numJoy");
         display(surprise, 2, "numSurprise");

@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.Collections;
+import java.util.Date;
 
 /**
  *
@@ -52,6 +53,11 @@ public class WindowPop {
         final EditText editTime = (EditText) promptView.findViewById(R.id.editTime);
         final EditText editComment = (EditText) promptView.findViewById(R.id.editComment);
 
+        Date date = new Date(System.currentTimeMillis());
+        String day = String.format("%tFT", date);
+        String hour = String.format("%tT", date);
+        final String currentTime = day + hour;
+
         final Emotion emotion = MainActivity.emotionList.get(position);
 
         editEmotion.setText(emotion.getEmotion());
@@ -73,23 +79,27 @@ public class WindowPop {
                 okButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        // error checking of the user inputs for the editing alert dialog
+                        /* error checking of the user inputs for the editing alert dialog */
                         if (editEmotion.getText().toString().trim().length() == 0) {
                             editEmotion.setError("Please enter an emotion!");
-                        } else if (editEmotion.getText().toString().trim().length() > 7) {
-                            editEmotion.setError("Please choose a listed emotion!");
                         } else if (editComment.getText().toString().trim().length() > 100) {
                             editComment.setError("Comment is limited to 100 characters!");
                         } else if (editTime.getText().toString().trim().length() == 0) {
                             editTime.setError("Please enter a date!");
-                        } else {
+                        }
+
+                        /* The user is not allowed to enter time into the future as that does not make sense in reality */
+                        else if (editTime.getText().toString().compareTo(currentTime) == 1 ) {
+                            editTime.setError("Please enter an appropriate date!");
+                        }
+                        else {
                             emotion.setEmotion(editEmotion.getText().toString());
                             emotion.setDate(editTime.getText().toString());
                             emotion.setComment(editComment.getText().toString());
 
-                            /**
-                             * after each edit, we sort the listview based on the date of each emotion
-                             */
+
+                             /* after each edit, we sort the list view based on the date of each emotion */
+
                             Collections.sort(MainActivity.emotionList, Emotion.sortComparator);
 
                             MainActivity.adapter.notifyDataSetChanged();
