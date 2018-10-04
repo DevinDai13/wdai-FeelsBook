@@ -8,6 +8,7 @@ import android.view.View;
 
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.Collections;
 
@@ -19,16 +20,16 @@ import java.util.Collections;
 
 
 /**
- * --Most of the code for initializing alert dialog are the universal way of setting it up so I
- * followed the tutorials in the two following links
+ * --Most of the code for initializing alert dialog is the universal way of setting it up so I
+ * just followed the tutorials in the two following links
  * https://developer.android.com/reference/android/app/Dialog
  * https://www.mkyong.com/android/android-prompt-user-input-dialog-example/
  *
- * --Also consulted Steven Yan @ ssyan@ualberta.ca
+ * --Also consulted Steven Yan @ ssyan@ualberta.ca on Alert dialogs
  *
  *
  * --This class is for setting up and initializing the pop up alert dialog for editing a selected
- * past emotion
+ * past emotion and saving the changes
  *
  * */
 
@@ -94,6 +95,8 @@ public class WindowPop {
                             MainActivity.adapter.notifyDataSetChanged();
                             MainActivity.saveInFile(context);
                             ad.dismiss();
+                            Toast.makeText(context,"Emotion edits saved",Toast.LENGTH_SHORT).show();
+
                         }
                     }
                 });
