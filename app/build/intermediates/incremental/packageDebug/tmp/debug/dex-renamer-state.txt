@@ -1,4 +1,4 @@
-#Fri Oct 05 12:24:08 MDT 2018
-base.0=C\:\\Users\\tonyw\\Documents\\U of A Stuff\\CMPUT 301 Course\\Assignment1 final\\wdai-FeelsBook\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\19
+#Fri Oct 05 13:26:43 MDT 2018
+base.0=C\:\\Users\\tonyw\\Documents\\U of A Stuff\\CMPUT 301 Course\\Assignment1 final\\wdai-FeelsBook\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 path.0=classes.dex
 renamed.0=classes.dex
