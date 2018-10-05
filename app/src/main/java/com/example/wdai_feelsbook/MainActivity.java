@@ -3,7 +3,6 @@ package com.example.wdai_feelsbook;
  * Copyright (c) 2018. CMPUT301. University of Alberta - All Rights Reserved.
  *  You may use, distribute or modify this code under terms and conditions of Code of Student
  *  Behaviour at University of Alberta.
- *
  */
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -46,7 +45,6 @@ import com.google.gson.reflect.TypeToken;
  */
 
 /**
- *
  *  This class controls the activities on the main page of the app. It shows the past records of the
  *  user entered emotions and the user can long click the list of past emotions to edit or delete
  *  emotions. The user can also click the Count Emotion button to see the count of each emotion ever
@@ -114,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
                  * used for creating Toast text
                  */
                 Toast.makeText(getApplicationContext(),"New emotion added",Toast.LENGTH_SHORT).show();
-
             }
         });
 
@@ -205,7 +202,6 @@ public class MainActivity extends AppCompatActivity {
                 saveInFile(mContext);
 
                 Toast.makeText(getApplicationContext(),"New emotion added",Toast.LENGTH_SHORT).show();
-
             }
         });
 
@@ -237,10 +233,14 @@ public class MainActivity extends AppCompatActivity {
     final WindowPop windowpop = new WindowPop(this);
 
     /* context menu for each item in past emotion list */
+
+    /**
+     * https://www.youtube.com/watch?v=nEt2soffl5Y by Tihomir RAdeff, retrieved on 30/09/2018
+     * Watched the above youtube video on how to create a context menu
+     */
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenu.ContextMenuInfo menuInfo) {
-
         super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.context_menu, menu);

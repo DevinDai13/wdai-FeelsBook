@@ -21,12 +21,14 @@ import java.util.Date;
 
 /**
  * --Most of the code for initializing alert dialog is the universal way of setting it up so I
- * just followed the tutorials in the two following links
+ * just followed the tutorials in the following links to build one that fits my needs.
  * https://developer.android.com/reference/android/app/Dialog
+ * https://developer.android.com/guide/topics/ui/dialogs#java
+ * https://www.tutorialspoint.com/android/android_alert_dialoges.htm
  * https://www.mkyong.com/android/android-prompt-user-input-dialog-example/
  *
  * --Also consulted Steven Yan @ ssyan@ualberta.ca on the idea of using Alert dialogs instead of
- * another activity
+ * another activity which was my original idea for the editing process.
  *
  * --This class is for setting up and initializing the pop up alert dialog for editing a selected
  * past emotion and saving the changes including error checking for the user inputs.
