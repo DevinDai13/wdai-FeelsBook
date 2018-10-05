@@ -29,13 +29,14 @@ import java.util.Date;
  * another activity
  *
  * --This class is for setting up and initializing the pop up alert dialog for editing a selected
- * past emotion and saving the changes
+ * past emotion and saving the changes including error checking for the user inputs.
  *
  * */
 
 public class WindowPop {
 
     private Context context;
+    String[] optionList = new String[] {"love", "joy", "surprise", "angry", "sadness", "fear"};
 
     public WindowPop(Context context) {
         this.context = context;
@@ -79,7 +80,16 @@ public class WindowPop {
                         /* error checking of the user inputs for the editing alert dialog */
                         if (editEmotion.getText().toString().trim().length() == 0) {
                             editEmotion.setError("Please enter an emotion!");
-                        } else if (editComment.getText().toString().trim().length() > 100) {
+                        }
+                        else if (!editEmotion.getText().toString().equals(optionList[0]) &&
+                                !editEmotion.getText().toString().equals(optionList[1]) &&
+                                !editEmotion.getText().toString().equals(optionList[2]) &&
+                                !editEmotion.getText().toString().equals(optionList[3]) &&
+                                !editEmotion.getText().toString().equals(optionList[4]) &&
+                                !editEmotion.getText().toString().equals(optionList[5])) {
+                            editEmotion.setError("Emotion not available!");
+                        }
+                        else if (editComment.getText().toString().trim().length() > 100) {
                             editComment.setError("Comment is limited to 100 characters!");
                         } else if (editTime.getText().toString().trim().length() == 0) {
                             editTime.setError("Please enter a date!");
