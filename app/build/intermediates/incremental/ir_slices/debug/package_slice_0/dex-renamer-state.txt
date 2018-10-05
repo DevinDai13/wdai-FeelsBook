@@ -1,0 +1,4 @@
+#Thu Oct 04 18:21:07 MDT 2018
+base.0=C\:\\Users\\tonyw\\Documents\\U of A Stuff\\CMPUT 301 Course\\Assignment1 final\\wdai-FeelsBook\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1
+path.0=classes.dex
+renamed.0=classes.dex
